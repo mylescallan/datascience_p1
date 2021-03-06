@@ -1,23 +1,42 @@
 # import 
 from IPython.core.display import display, HTML, Markdown
 
+def myHTML(text):
+    ss = '''<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>'''
+    es = "</span>"
+    return display(HTML(f"{ss}{text}{es}"))
+    
+def myHTMLreplace(text,word=''):
+    ss = '''<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>'''
+    es = "</span>"
+    text = text.replace(word,f"{es}<span style='background-color:#6DB423;color: white';>{word}</span>{ss}")
+    return display(HTML(f"{ss}{text}{es}"))
+
+
 def formatting_width():
-    '''
-    formatting_width() - styling function for jupyter notebook
-    no Input
-    Output: HTML styling, page width of 70%
-    '''
-    HTML('''<style>
+    from IPython.core.display import display, HTML, Markdown
+    display(HTML('''<style>
 
     .container { 
         width:70% !important; 
         }
+        
+    body (
+    font-family: "Georgia", serif !important;
+     font-size: 13pt !important;
+     line-height: 170% !important;
+     color: #353535 !important;
+     background: #ffffff !important;
+     background-color: #ffffff !important;
+     border-radius: 2px !important;
+     )
 
     #topdiv {
-        position: fixed;
+/*         position: fixed; */
         top: 100;
-        left: 0;
+/*         left: 0; */
     }
+
 
     input[type="submit"] {
         padding: 10px 10px 11px !important;
@@ -54,6 +73,7 @@ def formatting_width():
         -webkit-box-shadow: 0 2px 0 rgba(255, 255, 255, 0.5) inset;
         outline: 0 !important;
     }
+
 
     h1 {
         color: blue;
@@ -122,7 +142,7 @@ def formatting_width():
     a {
       color: hotpink !important;
     }
-    </style>''')
+    </style>'''))
     
     
 def hideCode():
@@ -132,7 +152,7 @@ def hideCode():
     Output: JavaScript styling, create button to toggle code
     '''
 
-    HTML('''<script>
+    display(HTML('''<script>
     code_show=true; 
     function code_toggle() {
      if (code_show){
@@ -144,4 +164,4 @@ def hideCode():
     } 
     $( document ).ready(code_toggle);
     </script>
-    <form action="javascript:code_toggle()" id="topdiv"><input type="submit" value="Click here: Toggle on/off code."></form>''')
+    <form action="javascript:code_toggle()" id="topdiv"><input type="submit" value="Click here: Toggle on/off code."></form>'''))
