@@ -18,7 +18,7 @@ def formatting_width():
     display(HTML('''<style>
 
     .container { 
-        width:70% !important; 
+        width:60% !important; 
         }
         
     body (
@@ -137,6 +137,11 @@ def formatting_width():
         margin-left: 0;
         margin-right: 0;
         font-weight: bold;
+    }
+    .output_png {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
     }
 
     a {
