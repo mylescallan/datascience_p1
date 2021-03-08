@@ -1798,13 +1798,6 @@ All listings, in the listings data, are in the calendar data file. But close to 
 
 ## Let's Remove Non-English Reviews
 
-
-
-
-    'Eloisa'
-
-
-
     [NbConvertApp] Converting notebook p1_blog_airBnB.ipynb to markdown
     [NbConvertApp] Support files will be in p1_blog_airBnB_files/
     [NbConvertApp] Making directory p1_blog_airBnB_files
@@ -1819,22 +1812,5 @@ All listings, in the listings data, are in the calendar data file. But close to 
     [NbConvertApp] Making directory p1_blog_airBnB_files
     [NbConvertApp] Making directory p1_blog_airBnB_files
     [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Writing 82899 bytes to p1_blog_airBnB.md
-
-
-    [NbConvertApp] Converting notebook p1_blog_airBnB.ipynb to markdown
-    [NbConvertApp] Support files will be in p1_blog_airBnB_files/
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Writing 51843 bytes to p1_blog_airBnB.md
+    [NbConvertApp] Writing 51852 bytes to p1_blog_airBnB.md
 
