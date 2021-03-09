@@ -9,9 +9,10 @@ def myHTML(text):
 def myHTMLreplace(text,word=''):
     ss = '''<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>'''
     es = "</span>"
-    text = text.replace(word,f"{es}<span style='background-color:#6DB423;color: white';>{word}</span>{ss}")
-    return display(HTML(f"{ss}{text}{es}"))
-
+    for words in [word.lower(), word.title()]:
+        if words in text:
+            text = text.replace(words,f"{es}<span style='background-color:#6DB423;color: white';>{words}</span>{ss}")
+            return display(HTML(f"{ss}{text}{es}"))
 
 def formatting_width():
     from IPython.core.display import display, HTML, Markdown
@@ -76,7 +77,7 @@ def formatting_width():
 
 
     h1 {
-        color: blue;
+        color: #1a1110 !important;
         display: block;
         font-size: 2em;
         margin-top: 0.67em;
@@ -87,8 +88,7 @@ def formatting_width():
         font-variant: small-caps;
     }
     h2 {
-        color: #0e9aa7;
-        color: #3da4ab;
+        color:  #343434 !important;
         display: block;
         font-size: 1.5em;
         margin-top: 0.83em;
@@ -99,7 +99,7 @@ def formatting_width():
         font-variant: small-caps;
     }
     h3 { 
-        color: #3da4ab;
+        color: #4d4b50 !important;
         display: block;
         font-size: 1.17em;
         margin-top: 1em;
@@ -109,7 +109,7 @@ def formatting_width():
         font-weight: bold;
     }
     h4 { 
-        color: #7732a8;
+        color: #777672 !important;
         display: block;
         margin-top: 0.1em !important;
         margin-bottom: 0.1em !important;
@@ -145,7 +145,7 @@ def formatting_width():
     }
 
     a {
-      color: hotpink !important;
+      color: #1a1110 !important;
     }
     </style>'''))
     
@@ -157,16 +157,16 @@ def hideCode():
     Output: JavaScript styling, create button to toggle code
     '''
 
-    display(HTML('''<script>
-    code_show=true; 
-    function code_toggle() {
-     if (code_show){
-     $('div.input').hide();
-     } else {
-     $('div.input').show();
-     }
-     code_show = !code_show
-    } 
-    $( document ).ready(code_toggle);
-    </script>
-    <form action="javascript:code_toggle()" id="topdiv"><input type="submit" value="Click here: Toggle on/off code."></form>'''))
+    HTML('''<script>
+            code_show=true; 
+            function code_toggle() {
+             if (code_show){
+             $('div.input').hide();
+             } else {
+             $('div.input').show();
+             }
+             code_show = !code_show
+            } 
+            $( document ).ready(code_toggle);
+            </script>
+            <form action="javascript:code_toggle()" id="topdiv"><input type="submit" value="Click here: Toggle on/off code."></form>''')

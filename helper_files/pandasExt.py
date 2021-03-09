@@ -13,7 +13,6 @@ def myBins(df,var):
     bins = [round(x,2) for x in bins]
     labels = [intervals[ind] for ind in range(len(intervals)) if  describe.loc[intervals[ind]] != describe.loc[intervals[ind-1]]]
     labels[-1] = "100%"
-    print(bins, labels)
     labels = [f"{str(bins[ind])} ({labels[ind].replace('%','th')})" for ind in range(len(labels))]
     return (bins,labels)
     
