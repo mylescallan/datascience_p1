@@ -10,44 +10,6 @@ _"Airbnb began in 2008 when two designers who had space to share hosted three tr
 _"Airbnb helps make sharing easy, enjoyable, and safe. We verify personal profiles and listings, maintain a smart messaging system so hosts and guests can communicate with certainty, and manage a trusted platform to collect and transfer payments._"
 
 
-## What Information Do We Have?
-The source of the data is [kaggle.com](kaggle.com). The data used in this analysis is for two cities:
-1. [Boston](https://www.kaggle.com/airbnb/boston)
-2. [Seattle](https://www.kaggle.com/airbnb/seattle/data)
-
-
-
-
-
-<script>
-code_show="a"
-var r = document.querySelector(':root')
-if (code_show === "a") {
-      code_show="flex"
-  }
-function code_toggle() {
-
-    var v = r.getElementsByClassName("jp-Cell-inputWrapper")
-
-    if (v.item(0).style.display === "") {
-        if (code_show === "none") {
-          for (i = 1; i < v.length-1; i++) {
-              v.item(i).style.display = "flex";
-          }
-          code_show = "flex"
-        } else {
-          for (i = 1; i < v.length-1; i++) {
-              v.item(i).style.display = "none";
-          }
-          code_show = "none"
-        }       
-    }
-} 
-</script>
-<form action="javascript:code_toggle()"><input type="submit" value="Toggle Code"></form>
-
-
-
 
 <style>
 
@@ -110,7 +72,7 @@ function code_toggle() {
 
 
     h1 {
-        color: blue;
+        color: #1a1110 !important;
         display: block;
         font-size: 2em;
         margin-top: 0.67em;
@@ -121,8 +83,7 @@ function code_toggle() {
         font-variant: small-caps;
     }
     h2 {
-        color: #0e9aa7;
-        color: #3da4ab;
+        color:  #343434 !important;
         display: block;
         font-size: 1.5em;
         margin-top: 0.83em;
@@ -133,7 +94,7 @@ function code_toggle() {
         font-variant: small-caps;
     }
     h3 { 
-        color: #3da4ab;
+        color: #4d4b50 !important;
         display: block;
         font-size: 1.17em;
         margin-top: 1em;
@@ -143,7 +104,7 @@ function code_toggle() {
         font-weight: bold;
     }
     h4 { 
-        color: #7732a8;
+        color: #777672 !important;
         display: block;
         margin-top: 0.1em !important;
         margin-bottom: 0.1em !important;
@@ -179,192 +140,99 @@ function code_toggle() {
     }
 
     a {
-      color: hotpink !important;
+      color: #1a1110 !important;
     }
     </style>
 
 
 
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>Rows and columns in: calendar (2702460, 5), listings (7403, 95), reviews (153124, 7)</span>
+## What Information Do We Have?
+The source of the data is [kaggle.com](kaggle.com). The data used in this analysis is for two cities: [Boston](https://www.kaggle.com/airbnb/boston) and  [Seattle](https://www.kaggle.com/airbnb/seattle/data)
+
+The data files are for _calendar_, _reviews_ and _listings_. The listings datafile contains one observation per listings, with information related to: Basic information (location, space, host, images (of listing and host), availability), Reviews, and Price. The calendar and reviews datafiles contain multiple entries per listing relating to individual availability data and reviews.
 
 
 
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>Unique listing ids in listings 7403</span>
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>Where the data relates to  7403 unique listings, with observations and variables:  listings (7403, 95), calendar (2702460, 5), reviews (153124, 7)</span>
 
 
+## Questions
 
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Columns in:<br>calendar: Listing Id, Date, Available, Price, City,
-       <br><br> listings: Id, Listing Url, Scrape Id, Last Scraped, Name, Summary, Space, Description, Experiences Offered, Neighborhood Overview, Notes, Transit, Access, Interaction, House Rules, Thumbnail Url, Medium Url, Picture Url, Xl Picture Url, Host Id, Host Url, Host Name, Host Since, Host Location, Host About, Host Response Time, Host Response Rate, Host Acceptance Rate, Host Is Superhost, Host Thumbnail Url, Host Picture Url, Host Neighbourhood, Host Listings Count, Host Total Listings Count, Host Verifications, Host Has Profile Pic, Host Identity Verified, Street, Neighbourhood, Neighbourhood Cleansed, Neighbourhood Group Cleansed, City, State, Zipcode, Market, Smart Location, Country Code, Country, Latitude, Longitude, Is Location Exact, Property Type, Room Type, Accommodates, Bathrooms, Bedrooms, Beds, Bed Type, Amenities, Square Feet, Price, Weekly Price, Monthly Price, Security Deposit, Cleaning Fee, Guests Included, Extra People, Minimum Nights, Maximum Nights, Calendar Updated, Has Availability, Availability 30, Availability 60, Availability 90, Availability 365, Calendar Last Scraped, Number Of Reviews, First Review, Last Review, Review Scores Rating, Review Scores Accuracy, Review Scores Cleanliness, Review Scores Checkin, Review Scores Communication, Review Scores Location, Review Scores Value, Requires License, License, Jurisdiction Names, Instant Bookable, Cancellation Policy, Require Guest Profile Picture, Require Guest Phone Verification, Calculated Host Listings Count, Reviews Per Month,
-       <br><br> reviews: Listing Id, Id, Date, Reviewer Id, Reviewer Name, Comments, City</span>
+For anyone new to AirBnB _(like me)_, the most obvious questions relate to:
+- Locaton: If I want to avail of this service, what choices do I have in terms of location?
+- Price: Compared to getting a hotel, is this service affordable?
+- Reviews: What am I getting for the price that I pay? Is is a quality service?
 
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>The listings id variable is a unique identifier (number of unique entries for each id: [1]</span>
-
+# Location
 
 
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>There are 3585 unique listings in the Boston area, and 3818 unique listings in the Seattle area</span>
 
 
-    93.31600201918224
-
-
-
-
-
-
-    count   5943.00
-    mean      93.32
-    std        8.21
-    min       20.00
-    0%        20.00
-    10%       83.20
-    20%       90.00
-    30%       92.00
-    40%       94.00
-    50%       96.00
-    60%       97.00
-    70%       98.00
-    80%      100.00
-    90%      100.00
-    100%     100.00
-    max      100.00
-    Name: review_scores_rating, dtype: float64
-
-
-
-    [20.0, 83.2, 90.0, 92.0, 94.0, 96.0, 97.0, 98.0, 100.0] ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '100%']
-
+We can plot the locations for AirBnB listings for both Boston and Seattle. Surprisingly _(for me)_ there are listings dotted around each city.
 
 
     
-![png](p1_blog_airBnB_files/p1_blog_airBnB_18_0.png)
+![png](p1_blog_airBnB_files/p1_blog_airBnB_22_0.png)
     
 
 
 
-
-
-    city
-    Boston    91.92
-    Seattle   94.54
-    Name: review_scores_rating, dtype: float64
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>The median availability, i.e. the median number of days of the year that the listing is available, is 179.0 for Boston, and 308.0 for Seattle</span>
 
 
 
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>The 75th percentile of availability, i.e. the median number of days of the year that the listing is available, is 325.0 for Boston, and 360.0 for Seattle</span>
+
+
+So, for Boston, the 50% of the listings are available for roughly half the year.Whereas for Seattle, at least 50% of the listings are available almost year round.
 
 
 
-    city
-    Boston    9.43
-    Seattle   9.64
-    Name: review_scores_accuracy, dtype: float64
+
+    'Gloria Sanchez'
 
 
 
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 7403 entries, 0 to 7402
-    Data columns (total 96 columns):
-     #   Column                            Non-Null Count  Dtype   
-    ---  ------                            --------------  -----   
-     0   id                                7403 non-null   int64   
-     1   listing_url                       7403 non-null   object  
-     2   scrape_id                         7403 non-null   int64   
-     3   last_scraped                      7403 non-null   object  
-     4   name                              7403 non-null   object  
-     5   summary                           7083 non-null   object  
-     6   space                             5777 non-null   object  
-     7   description                       7403 non-null   object  
-     8   experiences_offered               7403 non-null   object  
-     9   neighborhood_overview             4956 non-null   object  
-     10  notes                             3822 non-null   object  
-     11  transit                           5179 non-null   object  
-     12  access                            2096 non-null   object  
-     13  interaction                       2031 non-null   object  
-     14  house_rules                       2393 non-null   object  
-     15  thumbnail_url                     6484 non-null   object  
-     16  medium_url                        6484 non-null   object  
-     17  picture_url                       7403 non-null   object  
-     18  xl_picture_url                    6484 non-null   object  
-     19  host_id                           7403 non-null   int64   
-     20  host_url                          7403 non-null   object  
-     21  host_name                         7401 non-null   object  
-     22  host_since                        7401 non-null   object  
-     23  host_location                     7384 non-null   object  
-     24  host_about                        5235 non-null   object  
-     25  host_response_time                6409 non-null   object  
-     26  host_response_rate                6409 non-null   object  
-     27  host_acceptance_rate              6159 non-null   object  
-     28  host_is_superhost                 7401 non-null   object  
-     29  host_thumbnail_url                7401 non-null   object  
-     30  host_picture_url                  7401 non-null   object  
-     31  host_neighbourhood                6764 non-null   object  
-     32  host_listings_count               7401 non-null   float64 
-     33  host_total_listings_count         7401 non-null   float64 
-     34  host_verifications                7403 non-null   object  
-     35  host_has_profile_pic              7401 non-null   object  
-     36  host_identity_verified            7401 non-null   object  
-     37  street                            7403 non-null   object  
-     38  neighbourhood                     6444 non-null   object  
-     39  neighbourhood_cleansed            7403 non-null   object  
-     40  neighbourhood_group_cleansed      3818 non-null   object  
-     41  city                              7403 non-null   object  
-     42  state                             7403 non-null   object  
-     43  zipcode                           7358 non-null   object  
-     44  market                            7389 non-null   object  
-     45  smart_location                    7403 non-null   object  
-     46  country_code                      7403 non-null   object  
-     47  country                           7403 non-null   object  
-     48  latitude                          7403 non-null   float64 
-     49  longitude                         7403 non-null   float64 
-     50  is_location_exact                 7403 non-null   object  
-     51  property_type                     7399 non-null   object  
-     52  room_type                         7403 non-null   object  
-     53  accommodates                      7403 non-null   int64   
-     54  bathrooms                         7373 non-null   float64 
-     55  bedrooms                          7387 non-null   float64 
-     56  beds                              7393 non-null   float64 
-     57  bed_type                          7403 non-null   object  
-     58  amenities                         7403 non-null   object  
-     59  square_feet                       153 non-null    float64 
-     60  price                             7403 non-null   float64 
-     61  weekly_price                      2901 non-null   object  
-     62  monthly_price                     2405 non-null   object  
-     63  security_deposit                  3208 non-null   object  
-     64  cleaning_fee                      5266 non-null   object  
-     65  guests_included                   7403 non-null   int64   
-     66  extra_people                      7403 non-null   object  
-     67  minimum_nights                    7403 non-null   int64   
-     68  maximum_nights                    7403 non-null   int64   
-     69  calendar_updated                  7403 non-null   object  
-     70  has_availability                  3818 non-null   object  
-     71  availability_30                   7403 non-null   int64   
-     72  availability_60                   7403 non-null   int64   
-     73  availability_90                   7403 non-null   int64   
-     74  availability_365                  7403 non-null   int64   
-     75  calendar_last_scraped             7403 non-null   object  
-     76  number_of_reviews                 7403 non-null   int64   
-     77  first_review                      6020 non-null   object  
-     78  last_review                       6020 non-null   object  
-     79  review_scores_rating              5943 non-null   float64 
-     80  review_scores_accuracy            5922 non-null   float64 
-     81  review_scores_cleanliness         5932 non-null   float64 
-     82  review_scores_checkin             5925 non-null   float64 
-     83  review_scores_communication       5934 non-null   float64 
-     84  review_scores_location            5926 non-null   float64 
-     85  review_scores_value               5926 non-null   float64 
-     86  requires_license                  7403 non-null   object  
-     87  license                           0 non-null      float64 
-     88  jurisdiction_names                3818 non-null   object  
-     89  instant_bookable                  7403 non-null   object  
-     90  cancellation_policy               7403 non-null   object  
-     91  require_guest_profile_picture     7403 non-null   object  
-     92  require_guest_phone_verification  7403 non-null   object  
-     93  calculated_host_listings_count    7403 non-null   int64   
-     94  reviews_per_month                 6020 non-null   float64 
-     95  Review Scores Rating Percentiles  5943 non-null   category
-    dtypes: category(1), float64(18), int64(13), object(64)
-    memory usage: 5.4+ MB
+
+    
+![png](p1_blog_airBnB_files/p1_blog_airBnB_26_0.png)
+    
+
+
+
+    
+![png](p1_blog_airBnB_files/p1_blog_airBnB_27_0.png)
+    
+
+
+# Price
+
+
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>The median price is \$150.0 for Boston, and \$100.0 for Seattle (with the 1st percentile price being: \$31.0  and \$33.17,
+and the 99th percentile price being \$600.0  and \$473.3, respectively)</span>
+
+
+The breakdown of prices per zipcode for each city is:
+
+
+    
+![png](p1_blog_airBnB_files/p1_blog_airBnB_31_0.png)
+    
+
+
+Where the prices in red are for zipcodes where the price is at or below the 25th percentile.
+
+
+    
+![png](p1_blog_airBnB_files/p1_blog_airBnB_33_0.png)
+    
+
+
+
+    
+![png](p1_blog_airBnB_files/p1_blog_airBnB_34_0.png)
+    
 
 
 #### Is there information in the calendar or reviews data files that would be useful?
@@ -399,43 +267,43 @@ Columns in:<br>calendar: Listing Id, Date, Available, Price, City,
   </thead>
   <tbody>
     <tr>
-      <th>1745383</th>
-      <td>8029177</td>
-      <td>2016-11-17</td>
+      <th>1473187</th>
+      <td>10274175</td>
+      <td>2016-02-20</td>
+      <td>t</td>
+      <td>$46.00</td>
+      <td>Seattle</td>
+    </tr>
+    <tr>
+      <th>1476002</th>
+      <td>8193332</td>
+      <td>2016-11-06</td>
       <td>t</td>
       <td>$100.00</td>
       <td>Seattle</td>
     </tr>
     <tr>
-      <th>809330</th>
-      <td>3992208</td>
-      <td>2017-02-12</td>
+      <th>1330041</th>
+      <td>3269390</td>
+      <td>2016-12-15</td>
       <td>t</td>
-      <td>$99.00</td>
-      <td>Boston</td>
-    </tr>
-    <tr>
-      <th>1739914</th>
-      <td>8248970</td>
-      <td>2016-11-23</td>
-      <td>t</td>
-      <td>$250.00</td>
+      <td>$95.00</td>
       <td>Seattle</td>
     </tr>
     <tr>
-      <th>338306</th>
-      <td>6992859</td>
-      <td>2016-10-24</td>
+      <th>2112622</th>
+      <td>7713043</td>
+      <td>2016-01-06</td>
       <td>t</td>
-      <td>$399.00</td>
-      <td>Boston</td>
+      <td>$75.00</td>
+      <td>Seattle</td>
     </tr>
     <tr>
-      <th>895431</th>
-      <td>7325063</td>
-      <td>2017-06-03</td>
+      <th>23788</th>
+      <td>12806707</td>
+      <td>2017-07-04</td>
       <td>t</td>
-      <td>$249.00</td>
+      <td>$60.00</td>
       <td>Boston</td>
     </tr>
   </tbody>
@@ -476,54 +344,54 @@ Columns in:<br>calendar: Listing Id, Date, Available, Price, City,
   </thead>
   <tbody>
     <tr>
-      <th>35234</th>
-      <td>3554558</td>
-      <td>39597781</td>
-      <td>2015-07-25</td>
-      <td>25516459</td>
-      <td>Natalie</td>
-      <td>Both Jacqueline and the apartment were fantastic. Jacqueline was very kind and responsive throughout the entire process. The apartment was clean, beautiful, and in a great location. We would certainly stay again.</td>
+      <th>43699</th>
+      <td>2746782</td>
+      <td>38121292</td>
+      <td>2015-07-13</td>
+      <td>28180522</td>
+      <td>Anita</td>
+      <td>We checked in very late on Friday and since we approached from the street above the property, walking down the stairway, we had to disturb Jean-Marc to make sure we had the right place. He was very gracious and welcoming.\r\n\r\nThis unit was very clean, and just as pictured. The location is quiet and private, and since we came back rather late at night, we were happy not to disturb anyone. The bed was very comfortable and was appreciated after our busy days in Seattle. Great coffee with the Keurig, and the refrigerator and microwave would have been used, but we were hardly there!</td>
       <td>Seattle</td>
     </tr>
     <tr>
-      <th>148230</th>
-      <td>10083878</td>
-      <td>69323984</td>
-      <td>2016-04-10</td>
-      <td>65261946</td>
-      <td>Kathy</td>
-      <td>Jen and Ted are great hosts.  Their place is well appointed and very spacious.  You won’t be disappointed with all the amenities, industrial décor and the convenient location in the South End.  They also can give you all sorts of ideas on where to eat in the area.  We would definitely stay at their place in the future.</td>
+      <th>134473</th>
+      <td>8523157</td>
+      <td>83104785</td>
+      <td>2016-07-01</td>
+      <td>75099287</td>
+      <td>Jon</td>
+      <td>The hosts were great. They  provided outstanding communication before and during the trip. They offered suggestions about where to go and where to eat. The accommodations provided were immaculate and spacious. WARNING: you will fall in love with the cat and dogs. I returned two additional times due to the pets and hospitality. Thanks!</td>
       <td>Boston</td>
     </tr>
     <tr>
-      <th>2996</th>
-      <td>741699</td>
-      <td>9263232</td>
-      <td>2013-12-16</td>
-      <td>2119646</td>
-      <td>Eugene</td>
-      <td>The Zen Retreat is tastefully decorated and exactly what I needed after two days of running around Seattle trying to take in all the sights. Matt was the consummate host and even put out some sparkling water on the beds for us to enjoy. Would recommend to anyone visiting the Seattle area!</td>
+      <th>14338</th>
+      <td>1796302</td>
+      <td>10641558</td>
+      <td>2014-03-01</td>
+      <td>11918488</td>
+      <td>Meredith</td>
+      <td>Susanna was a fantastic hostess during my recent stay. She was accessible and accommodating, and I felt welcome from the moment we first communicated. Her home is lovely, her pets are sweet, and her local knowledge is impressive. She provided expert guidance on everything from restaurants to city-wide transit, and she made sure my friend and I had everything we needed at all times. I'll certainly plan my next trip to Seattle around Susanna's availability. I can't imagine staying anywhere else!</td>
       <td>Seattle</td>
     </tr>
     <tr>
-      <th>16878</th>
-      <td>2186330</td>
-      <td>26021085</td>
-      <td>2015-02-01</td>
-      <td>17466272</td>
-      <td>Heather</td>
-      <td>My husband and son stayed in the condo and had a great time. Parking was requested, the stalls are quite small.  The beds were comfortable and the washer and dryer was definitely a plus. Thank you!</td>
-      <td>Seattle</td>
-    </tr>
-    <tr>
-      <th>111733</th>
-      <td>2747654</td>
-      <td>52233038</td>
-      <td>2015-10-27</td>
-      <td>18561373</td>
-      <td>Kate</td>
-      <td>Great location, vibrant part of Boston and walking distance to most sights in Boston. Comfortable bed for two with our adult son catered for with a pullout couch. \nNoisy and light due to busy street but busy days and ear plugs and eye covers gave us good nights sleep.</td>
+      <th>89471</th>
+      <td>3601424</td>
+      <td>32554893</td>
+      <td>2015-05-19</td>
+      <td>21341343</td>
+      <td>Crystal</td>
+      <td>Erin was an extremely gracious host.  The room was spacious and had plenty of storage for all of our luggage and clothing.  We weren't at the home much, but we're thankful that we could come in after a long day and get straight to rest!  Room was comfy and the house was clean!</td>
       <td>Boston</td>
+    </tr>
+    <tr>
+      <th>62799</th>
+      <td>7305969</td>
+      <td>53210004</td>
+      <td>2015-11-06</td>
+      <td>11489767</td>
+      <td>Amy</td>
+      <td>Emily was a great hostess and made me feel right at home with anything I needed and great recommendations.</td>
+      <td>Seattle</td>
     </tr>
   </tbody>
 </table>
@@ -531,149 +399,109 @@ Columns in:<br>calendar: Listing Id, Date, Available, Price, City,
 
 
 
+# Reviews
+
 
 <span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>To create all of the required pickle files took 1835.31 seconds, or 30.59 minutes</span>
 
 
+We have seen that the reviews are mostly positive. We are going analyze the reviews to see the sentiments expressed in the review. We are going use natural language process to scan each of the reviews for key _"sentiments"_ that are expressed in the reviews.
 
+We will do this in three ways. 
+- Firstly, we will naively just scan the reviews for sentiments.
+- Once that is complete, we will review the results to see if they are consistent with the review ratings. We will use that information to update our analysis.
+- Finally, we will will perform a review of our update and present our final analysis.
 
-
-    16
-
-
+## Naive Examination
 
 
     
-![png](p1_blog_airBnB_files/p1_blog_airBnB_30_0.png)
+![png](p1_blog_airBnB_files/p1_blog_airBnB_44_0.png)
     
 
+
+The results for the positive reviews are not too surprising, the results for the negative sentiments are shocking. 
+
+Let's scan through some of the reviews to see where the words `die`, `rob`, `killer` and `war` appear. It turns out, we only need to look at the one example of each to see why those apparently shocking terms are used.
+
+#### Die
 
 
 <span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>Sean und seine Frau Clara sind sehr freundliche, aufmerksame und hilfsbereite Gastgeber. Sie bringen ihren Gästen großes Vertrauen entgegen. Schlafzimmer und Badezimmer waren gepflegt und großzügig. Als Mitbenutzer der Küche und des Wohnzimmers fühlten wir uns willkommen. Sean ist so freundlich, mein Fahrrad in seiner Garage aufzubewahren, solange ich durch Kanada reise. Ich kann</span><span style='background-color:#6DB423;color: white';> die</span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>se Gastgeber nur weiter empfehlen. Uwe Gerischer</span>
 
 
+#### Killer
+
+
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>This airy studio had all the amenities and the most amazing view from the spacious patio. Walking distance to downtown and offering</span><span style='background-color:#6DB423;color: white';> killer </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>views this property was more than I could have hoped for. Our hostess was more than helpful and left everything a visitor could need, whether staying for one night or more. I cannot recommend this property highly enough!</span>
+
+
+#### Rob
+
+
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>We contacted</span><span style='background-color:#6DB423;color: white';> Rob</span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> and he has great communication with us on the details of the place. We decided to book it. At the time of check-in,</span><span style='background-color:#6DB423;color: white';> Rob</span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> came greet us and explained about the room. The room was very nice and clean as we expected. It is like what is in the pictures. We love the location of this room as it is close to everything such as highway and attractions. There are some coffee shops and grocery stores around the places. So far, we really enjoyed our stay.</span>
+
+
+So some of the reviews are not in english, and some of the _"sentiments"_ detected are due to colloquial usages. First, let's remove the non-english reviews.
+
+## English Only Reviews
+
 
     
-![png](p1_blog_airBnB_files/p1_blog_airBnB_32_0.png)
+![png](p1_blog_airBnB_files/p1_blog_airBnB_55_0.png)
     
 
+
+Surprisingly, _"die"_ remains, but _"kller"_ (which is mainly english colloquial) doesn't. Unsurprisingly, _"rob"_ still remains. Let's see why _"die"_ is used.
 
 
 <span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>Julie is a fantastic host. She greeted me warmly and answered all of my questions as I had them. What stands out for me is that she offered to get anything I needed for the mother-in-law unit (an extra trashcan, a microwave, blankets, etc.). She made sure that I was comfortable and felt welcomed. 
 
 Something to be aware of is that the pictures are of a stock townhome from this complex but the place is nearly identical. As mentioned in previous reviews, there is no carpet in the bedroom. However, the bedroom and living room above it have its own separate climate control. Because of that, part of the floor is heated! 
 
-Julie's home is clean with minimal decorations and a modern feel. The neighborhood is quiet and safe; it is within walking distance to bus stops and downtown. There's also lots of coffee shops, restaurants, and bars a few blocks away. It's a great, secure location. For nights in, the WiFi is incredibly fast and the bed is soft and very comfortable. The view from the roof is to</span><span style='background-color:#6DB423;color: white';> die</span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> for. 
+Julie's home is clean with minimal decorations and a modern feel. The neighborhood is quiet and safe; it is within walking distance to bus stops and downtown. There's also lots of coffee shops, restaurants, and bars a few blocks away. It's a great, secure location. For nights in, the WiFi is incredibly fast and the bed is soft and very comfortable. The view from the roof is to</span><span style='background-color:#6DB423;color: white';> die </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>for. 
 
 While Julie was often busy with work and her personal life, it was always a pleasure to speak with her at the end of the day. This is a great place and I highly recommend renting from her! </span>
 
 
+Ok, more colloquial usage, what about _"killer"_?
 
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>We contacted</span><span style='background-color:#6DB423;color: white';> Rob</span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> and he has great communication with us on the details of the place. We decided to book it. At the time of check-in,</span><span style='background-color:#6DB423;color: white';> Rob</span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> came greet us and explained about the room. The room was very nice and clean as we expected. It is like what is in the pictures. We love the location of this room as it is close to everything such as highway and attractions. There are some coffee shops and grocery stores around the places. So far, we really enjoyed our stay.</span>
+
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>This airy studio had all the amenities and the most amazing view from the spacious patio. Walking distance to downtown and offering</span><span style='background-color:#6DB423;color: white';> killer </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>views this property was more than I could have hoped for. Our hostess was more than helpful and left everything a visitor could need, whether staying for one night or more. I cannot recommend this property highly enough!</span>
+
+
+
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>We contacted</span><span style='background-color:#6DB423;color: white';> Rob </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>and he has great communication with us on the details of the place. We decided to book it. At the time of check-in,</span><span style='background-color:#6DB423;color: white';> Rob </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>came greet us and explained about the room. The room was very nice and clean as we expected. It is like what is in the pictures. We love the location of this room as it is close to everything such as highway and attractions. There are some coffee shops and grocery stores around the places. So far, we really enjoyed our stay.</span>
 
 
 
     
-![png](p1_blog_airBnB_files/p1_blog_airBnB_35_0.png)
+![png](p1_blog_airBnB_files/p1_blog_airBnB_61_0.png)
     
 
 
 
-
-
-    1.777509068923821
-
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 0</span>
+    
+![png](p1_blog_airBnB_files/p1_blog_airBnB_62_0.png)
+    
 
 
 
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> my phone gps was not aware that some streets behind safeway don't "go all the way through" due to open land  (</span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>ends) without roads so if you're walking (esp.</span>
+<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>I had an excellent time at Carol's place.  The room was everything I needed and the location was great.  I had rented a car and quickly found that parking in Seattle can be something of an ordeal, but Carol's house is located towards the end of a</span><span style='background-color:#6DB423;color: white';> dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>end street with so few houses on it that you'll always have a place to park for the night.  If you don't have a car, it's still totally possible to walk to some major hotspots, like the sports stadiums.  All in all I had a great time!</span>
 
 
 
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 1</span>
+    
+![png](p1_blog_airBnB_files/p1_blog_airBnB_64_0.png)
+    
 
 
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>  i had rented a car and quickly found that parking in seattle can be something of an ordeal, but carol's house is located towards the end of a </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>end street with so few houses on it that you'll always have a place to park for the night.</span>
-
+#### Word Clouds Proportional To Sentiments Expressed
 
 
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 2</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> 
-i was on a work trip so i was normally </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>tired when i got back each night so i was very happy with the space and privacy they gave us.</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 3</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> also, all of the smoke detectors were </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>and required new 9 volt batteries, to prevent them from beeping all night long, which we happily replaced.</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 4</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>as we got nearer to check in, sid was helpful to welcome me & text me the directions/instructions because my phone was almost </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>& unable to access internet.</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 5</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> you are </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>in the center of belltown which has a ton of restaurants within a couple blocks so that was awesome.</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 6</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> the whole process was </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>simple.</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 7</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> location is </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>central, 5min walk from the space needle and the not-to-be-missed music museum.</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 8</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> the </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>flowers in several of the windows add to the atmosphere (in a creepy way).</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>
-Comments Number 9</span>
-
-
-
-<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'> others are aesthetic: consolidate single toiletry bottles (or buy a new $3 bottle of suave every guest stay or two), toss the </span><span style='background-color:#6DB423;color: white';>dead </span><span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>plants on the fire escape, use white/clear bulbs, paint over ceiling stains instead of smearing a dirty cloth over them.</span>
+    
+![png](p1_blog_airBnB_files/p1_blog_airBnB_66_0.png)
+    
 
 
 #### Time Taken
@@ -745,7 +573,7 @@ All listings, in the listings data, are in the calendar data file. But close to 
 
 
     
-![png](p1_blog_airBnB_files/p1_blog_airBnB_63_0.png)
+![png](p1_blog_airBnB_files/p1_blog_airBnB_85_0.png)
     
 
 
@@ -774,19 +602,19 @@ All listings, in the listings data, are in the calendar data file. But close to 
 
 
     
-![png](p1_blog_airBnB_files/p1_blog_airBnB_65_0.png)
+![png](p1_blog_airBnB_files/p1_blog_airBnB_87_0.png)
     
 
 
 
     
-![png](p1_blog_airBnB_files/p1_blog_airBnB_66_0.png)
+![png](p1_blog_airBnB_files/p1_blog_airBnB_88_0.png)
     
 
 
 
     
-![png](p1_blog_airBnB_files/p1_blog_airBnB_67_0.png)
+![png](p1_blog_airBnB_files/p1_blog_airBnB_89_0.png)
     
 
 
@@ -1765,38 +1593,11 @@ All listings, in the listings data, are in the calendar data file. But close to 
 
 
 
-
-    
-![png](p1_blog_airBnB_files/p1_blog_airBnB_80_0.png)
-    
-
-
-
-    
-![png](p1_blog_airBnB_files/p1_blog_airBnB_81_0.png)
-    
-
-
-
-
-
-    65536
-
-
-
-
-    
-![png](p1_blog_airBnB_files/p1_blog_airBnB_83_0.png)
-    
-
-
-
-    
-![png](p1_blog_airBnB_files/p1_blog_airBnB_84_0.png)
-    
-
-
 ## Let's Remove Non-English Reviews
+
+    [NbConvertApp] Converting notebook p1_blog_airBnB.ipynb to html
+    [NbConvertApp] Writing 10172346 bytes to p1_blog_airBnB.html
+
 
     [NbConvertApp] Converting notebook p1_blog_airBnB.ipynb to markdown
     [NbConvertApp] Support files will be in p1_blog_airBnB_files/
@@ -1812,5 +1613,45 @@ All listings, in the listings data, are in the calendar data file. But close to 
     [NbConvertApp] Making directory p1_blog_airBnB_files
     [NbConvertApp] Making directory p1_blog_airBnB_files
     [NbConvertApp] Making directory p1_blog_airBnB_files
-    [NbConvertApp] Writing 51852 bytes to p1_blog_airBnB.md
+    [NbConvertApp] Making directory p1_blog_airBnB_files
+    [NbConvertApp] Making directory p1_blog_airBnB_files
+    [NbConvertApp] Making directory p1_blog_airBnB_files
+    [NbConvertApp] Making directory p1_blog_airBnB_files
+    [NbConvertApp] Writing 44420 bytes to p1_blog_airBnB.md
+
+
+    [NbConvertApp] Converting notebook p1_blog_airBnB.ipynb to html
+    [NbConvertApp] Writing 10000359 bytes to p1_blog_airBnB.html
+
+
+    [NbConvertApp] Converting notebook p1_blog_airBnB.ipynb to html
+    [NbConvertApp] Writing 10005527 bytes to p1_blog_airBnB.html
+
+
+
+
+
+    1.015113064615719
+
+
+
+
+
+
+    0.9851119396030626
+
+
+
+
+
+
+    0.496250070310918
+
+
+
+
+
+
+    0.5037499296890819
+
 
