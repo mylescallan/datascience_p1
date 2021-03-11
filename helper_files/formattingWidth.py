@@ -2,153 +2,27 @@
 from IPython.core.display import display, HTML, Markdown
 
 def myHTML(text):
-    ss = '''<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>'''
+    ss = '''<span style='font-size:16.0pt;color:black;font-family:"Times New Roman";'>'''
     es = "</span>"
     return display(HTML(f"{ss}{text}{es}"))
     
 def myHTMLreplace(text,word=''):
-    ss = '''<span style='font-size:14.0pt;color:black;font-family:"Times New Roman";'>'''
+    ss = '''<span style='font-size:12.0pt;color:black;font-family:"Times New Roman";'>'''
     es = "</span>"
     for words in [word.lower(), word.title()]:
         if words in text:
             text = text.replace(words,f"{es}<span style='background-color:#6DB423;color: white';>{words}</span>{ss}")
             return display(HTML(f"{ss}{text}{es}"))
 
-def formatting_width():
-    from IPython.core.display import display, HTML, Markdown
-    display(HTML('''<style>
+def set_css_style(css_file_path):
+    """
+    Read the custom CSS file and load it into Jupyter.
+    Pass the file path to the CSS file.
+    """
 
-    .container { 
-        width:60% !important; 
-        }
-        
-    body (
-    font-family: "Georgia", serif !important;
-     font-size: 13pt !important;
-     line-height: 170% !important;
-     color: #353535 !important;
-     background: #ffffff !important;
-     background-color: #ffffff !important;
-     border-radius: 2px !important;
-     )
-
-    #topdiv {
-/*         position: fixed; */
-        top: 100;
-/*         left: 0; */
-    }
-
-
-    input[type="submit"] {
-        padding: 10px 10px 11px !important;
-        font-size: 14px !important;
-        background-color: #681796;
-        font-weight: bold;
-        text-shadow: 0px 2px black;
-        color: #ffffff;
-        border-radius: 50px;
-        -moz-border-radius: 50px;
-        -webkit-border-radius: 50px;
-        border: 2px solid #9220d4;
-        cursor: pointer;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        -moz-box--shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        -webkit-box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        outline: 0 !important;
-    }
-
-    input[type="submit"]:hover {
-        padding: 10px 10px 11px !important;
-        font-size: 14px !important;
-        background-color: #9220d4;
-        font-weight: bold;
-        text-shadow: 0px 2px black;
-        color: #ffffff;
-        border-radius: 50px;
-        -moz-border-radius: 50px;
-        -webkit-border-radius: 50px;
-        border: 2px solid #681796;
-        cursor: pointer;
-        box-shadow: 0 2px 0 rgba(255, 255, 255, 0.5) inset;
-        -moz-box-shadow: 0 2px 0 rgba(255, 255, 255, 0.5) inset;
-        -webkit-box-shadow: 0 2px 0 rgba(255, 255, 255, 0.5) inset;
-        outline: 0 !important;
-    }
-
-
-    h1 {
-        color: #1a1110 !important;
-        display: block;
-        font-size: 2em;
-        margin-top: 0.67em;
-        margin-bottom: 0.67em;
-        margin-left: 0;
-        margin-right: 0;
-        font-weight: bold;
-        font-variant: small-caps;
-    }
-    h2 {
-        color:  #343434 !important;
-        display: block;
-        font-size: 1.5em;
-        margin-top: 0.83em;
-        margin-bottom: 0.83em;
-        margin-left: 0;
-        margin-right: 0;
-        font-weight: bold;
-        font-variant: small-caps;
-    }
-    h3 { 
-        color: #4d4b50 !important;
-        display: block;
-        font-size: 1.17em;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        margin-left: 0;
-        margin-right: 0;
-        font-weight: bold;
-    }
-    h4 { 
-        color: #777672 !important;
-        display: block;
-        margin-top: 0.1em !important;
-        margin-bottom: 0.1em !important;
-        margin-left: 0;
-        margin-right: 0;
-        padding: 0px !important;
-        border: 0 !important;
-        font-weight: bold;
-    }
-    h5 { 
-        color: #fe8a71;
-        display: block;
-        font-size: .83em;
-        margin-top: 1.67em;
-        margin-bottom: 1.67em;
-        margin-left: 0;
-        margin-right: 0;
-        font-weight: bold;
-    }
-    h6 { 
-        display: block;
-        font-size: .67em;
-        margin-top: 2.33em;
-        margin-bottom: 2.33em;
-        margin-left: 0;
-        margin-right: 0;
-        font-weight: bold;
-    }
-    .output_png {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    }
-
-    a {
-      color: #1a1110 !important;
-    }
-    </style>'''))
-    
+    styles = open(css_file_path, "r").read()
+    s = '<style>%s</style>' % styles     
+    return HTML(s)    
     
 def hideCode():
     '''
