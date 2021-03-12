@@ -4,6 +4,8 @@
 
 # AirBnB - A Sentiment Analysis
 
+[Blog Link](http://www.mylescallan.com/udacity/p1_blog_airBnB.html)
+
 ## Data
 The source of the data is [kaggle.com](kaggle.com). The data used in this analysis is for two cities: [Boston](https://www.kaggle.com/airbnb/boston) and  [Seattle](https://www.kaggle.com/airbnb/seattle/data)
 
