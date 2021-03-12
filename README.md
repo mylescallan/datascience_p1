@@ -95,3 +95,16 @@ For anyone new to AirBnB _(like me)_, the most obvious questions relate to:
 - Price: Compared to getting a hotel, is this service affordable?
 - Reviews: What am I getting for the price that I pay? Is is a quality service?
 
+# Conclusion
+
+As far back as 2016, when these datasets were compiled, _AirBnB_ was very active _(at least in the cities that we have data for)_.
+
+We found some surprising results:
+- The availability of listings on any given day differs dramatically between location
+- The ratings are surprisingly positive, given the number of listings available. Obviously, they are not uniformly positive (I omitted an explicit analysis of some of the negative reviews - some are truly horrific).
+- There is little correlation between the ratings and prices of the listings. This stands out as the most surprising conclusion for this dataset.
+
+We found some entertaining results:
+- A naive analysis of sentiments will be biased by _"Die Deutschen"_ (i.e. _"The Germans"_) and colloquial English usage.
+
+Obviously, this is just _"the tip of the iceberg"_. For example, the price analysis would involve gathering information about amenities, listing rental unit size, and so on. But hopefully it was an enjoyable read!
